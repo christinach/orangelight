@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_203055) do
     t.datetime "updated_at"
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.string "vocabulary"
   end
 
   create_table "searches", id: :serial, force: :cascade do |t|
