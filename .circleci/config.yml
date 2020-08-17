@@ -71,14 +71,14 @@ jobs:
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
-            - orangelight-{{ checksum "yarn.lock" }}
-            - orangelight-
+            - orangelight-yarn-{{ checksum "yarn.lock" }}
+            - orangelight-yarn-
       - run:
           name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
+          command: yarn install
       # Store yarn / webpacker cache
       - save_cache:
-          key: orangelight-{{ checksum "yarn.lock" }}
+          key: orangelight-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run:
