@@ -104,6 +104,15 @@ RSpec.describe 'catalog/show' do
     end
   end
 
+  context 'when a document has a table of contents' do
+    it 'breaks the contents into multiple lines' do
+      visit 'catalog/99125412083106421'
+      contents_display = page.find_all(:css, '.blacklight-contents_display').last
+      expect(contents_display).to have_css('li')
+      expect(contents_display.find_all('li').first.text).to eq('Introduction: Reframing sexuality, faith and migration')
+    end
+  end
+
   context 'when a document has Homosaurus subjects' do
     it 'displays the subjects' do
       visit 'catalog/99125412083106421'
